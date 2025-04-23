@@ -1,0 +1,5 @@
+notebooks/
+src/models/
+resnet34-cifar100/src/models
+resnet34-cifar100/src/cifar-100-python.tar.gz
+resnet34-cifar100/src/cifar-100-python

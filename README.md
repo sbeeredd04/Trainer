@@ -228,9 +228,52 @@ def plot_learning_curve(history):
 
 This guide provides a complete overview of the ResNet34 model training pipeline for CIFAR-100, from dataset handling and augmentation to training, evaluation, and visualization.
 
-- try to expereiment with different learning rates
-- Hyperparameter tuning / experimenting
-- graph of loss 
-- graphs for understanding
-- take one image run any convolution filter and see how does stride kernel and padding to observe the affect
-- 
+# Experimentation and Analysis
+
+## 1. Learning Rate Exploration
+- **Experiment**: Train the model with various learning rates (0.1, 0.01, 0.001, 0.0001)
+- **Implementation**: Modify the `max_lr` parameter in the main script.
+- **Analysis**: Plot validation accuracy curves for each learning rate to find the optimal range.
+- **Learning Goal**: Understand how learning rate affects convergence speed and final accuracy.
+
+## 2. Hyperparameter Sensitivity Analysis
+- **Experiment**: Systematically vary batch size, weight decay, and gradient clipping.
+- **Implementation**: Create a grid search across key hyperparameters.
+- **Analysis**: Generate heatmaps showing performance across different parameter combinations.
+- **Learning Goal**: Discover which parameters most significantly impact model performance.
+
+## 3. Augmentation Ablation Study
+- **Experiment**: Train with different combinations of augmentations enabled/disabled.
+- **Implementation**: Create versions of `transform_train` with specific augmentations removed.
+- **Analysis**: Compare final accuracy and generalization gap (train-test accuracy difference).
+- **Learning Goal**: Quantify the contribution of each augmentation technique.
+
+## 4. Loss Landscape Visualization
+- **Experiment**: Plot loss values across different weight configurations.
+- **Implementation**: Use techniques like filter normalization to visualize the loss surface.
+- **Analysis**: Compare loss landscapes before and after training.
+- **Learning Goal**: Visualize optimization challenges in deep networks.
+
+## 5. Convolution Filter Visualization
+- **Experiment**: Apply individual convolution filters to sample CIFAR-100 images.
+- **Implementation**: Extract filters from the trained model and apply them to sample images.
+- **Analysis**: Display side-by-side comparisons of original and filtered images.
+- **Learning Goal**: Understand what features different convolutional layers detect.
+
+## 6. Stride and Padding Effects
+- **Experiment**: Create a mini-network with various stride and padding configurations.
+- **Implementation**: Apply filters with different stride (1, 2, 3) and padding (0, 1, 2) settings.
+- **Analysis**: Visualize how spatial dimensions and feature extraction change.
+- **Learning Goal**: Develop intuition for how stride and padding affect feature maps.
+
+## 7. Optimization Algorithm Comparison
+- **Experiment**: Train identical models with different optimizers (SGD, Adam, RMSprop).
+- **Implementation**: Modify the `opt_func` parameter.
+- **Analysis**: Compare convergence speeds and final performance.
+- **Learning Goal**: Understand optimizer strengths and weaknesses.
+
+## 8. Learning Rate Schedule Comparison
+- **Experiment**: Compare OneCycleLR with step decay and cosine annealing.
+- **Implementation**: Modify the scheduler implementation in the training loop.
+- **Analysis**: Plot learning rates over time and resulting accuracy curves.
+- **Learning Goal**: Understand how different learning rate schedules affect training dynamics.
